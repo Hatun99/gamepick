@@ -1,0 +1,20 @@
+html, body { margin: 0; padding: 0; background: #05030d; }
+* { box-sizing: border-box; }
+body {
+  font-family: 'IBM Plex Sans Arabic', system-ui, sans-serif;
+  color: #efeaff;
+  -webkit-font-smoothing: antialiased;
+}
+a { color: #b79bff; text-decoration: none; }
+a:hover { color: #e2d6ff; }
+button { font-family: inherit; }
+img { max-width: 100%; }
+
+@keyframes gp-float  { 0%,100% { transform: translate3d(0,0,0); } 50% { transform: translate3d(0,-18px,0); } }
+@keyframes gp-shimmer{ 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
+@keyframes gp-pulse  { 0%,100% { opacity: .55; } 50% { opacity: 1; } }
+@keyframes gp-rise   { from { opacity: 0; transform: translate3d(0,18px,0); } to { opacity: 1; transform: none; } }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+}
