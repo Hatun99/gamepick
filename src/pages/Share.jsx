@@ -4,7 +4,7 @@ import Shell from '../components/Shell.jsx';
 import Loading from './Loading.jsx';
 import Results from './Results.jsx';
 import StateScreen from './StateScreen.jsx';
-import { fetchSession, sendVote } from '../lib/api.js';
+import { fetchSession } from '../lib/api.js';
 
 // صفحة النتيجة المشتركة — تُقرأ مباشرة من قاعدة البيانات بدون تسجيل دخول
 export default function Share() {
@@ -33,8 +33,6 @@ export default function Share() {
       {status === 'ready' && (
         <Results
           games={games}
-          sessionId={sessionId}
-          onVote={(gameId, vote) => sendVote(sessionId, gameId, vote)}
           onRestart={() => navigate('/')}
           restartLabel="جرّب أنت أيضاً"
         />

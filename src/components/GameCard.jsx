@@ -1,33 +1,10 @@
 import { C, mono, glassCard } from '../ui.js';
 
-function voteStyle(active, tone) {
-  return {
-    display: 'inline-flex', alignItems: 'center', gap: 8, minHeight: 44,
-    padding: '0 16px', borderRadius: 999, cursor: 'pointer', fontSize: 14,
-    fontFamily: 'inherit', fontWeight: active ? 600 : 400,
-    border: active ? '1px solid rgba(255,255,255,.65)' : '1px solid rgba(180,165,255,.22)',
-    background: active ? (tone === 'up' ? 'rgba(80,200,150,.24)' : 'rgba(255,120,140,.2)') : 'rgba(255,255,255,.04)',
-    color: active ? (tone === 'up' ? '#a9f2ce' : '#ffb8c4') : '#bdb5e2'
-  };
-}
-
 const chipStyle = {
   display: 'inline-flex', alignItems: 'center', gap: 7, minHeight: 36,
   padding: '0 13px', borderRadius: 999, border: '1px solid ' + C.lineSoft,
   background: 'rgba(255,255,255,.05)', fontSize: 13, color: '#ccc4f2'
 };
-
-const ArrowUp = () => (
-  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
-    <circle cx="8" cy="8" r="6" /><path d="M8 11V5" /><path d="m5.4 7.6L8 5l2.6 2.6" />
-  </svg>
-);
-
-const ArrowDown = () => (
-  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
-    <circle cx="8" cy="8" r="6" /><path d="M8 5v6" /><path d="m5.4 8.4L8 11l2.6-2.6" />
-  </svg>
-);
 
 const ExternalIcon = () => (
   <svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" aria-hidden>
@@ -35,7 +12,7 @@ const ExternalIcon = () => (
   </svg>
 );
 
-export default function GameCard({ game, vote, onVote }) {
+export default function GameCard({ game }) {
   const year = game.released ? String(game.released).slice(0, 4) : null;
   const score = Number(game.match_score) || 0;
 
@@ -107,7 +84,6 @@ export default function GameCard({ game, vote, onVote }) {
                 ميتاكريتيك <b style={{ fontFamily: mono }}>{game.metacritic}</b>
               </span>
             )}
-            <span dir="rtl" style={{ color: C.textMute }}>{(game.platforms || []).join('، ')}</span>
           </div>
         </div>
 
@@ -146,15 +122,6 @@ export default function GameCard({ game, vote, onVote }) {
               )}
             </div>
           )}
-
-          <div style={{ display: 'flex', gap: 10, marginTop: 'auto' }}>
-            <button type="button" onClick={() => onVote(1)} aria-pressed={vote === 1} style={voteStyle(vote === 1, 'up')}>
-              <ArrowUp /> تناسبني
-            </button>
-            <button type="button" onClick={() => onVote(-1)} aria-pressed={vote === -1} style={voteStyle(vote === -1, 'down')}>
-              <ArrowDown /> لا تناسبني
-            </button>
-          </div>
         </div>
       </div>
     </article>

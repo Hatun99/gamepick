@@ -6,7 +6,7 @@ import Loading from './Loading.jsx';
 import Results from './Results.jsx';
 import StateScreen from './StateScreen.jsx';
 import { STEPS, summarize } from '../data/quiz.js';
-import { recommend, sendVote } from '../lib/api.js';
+import { recommend } from '../lib/api.js';
 
 const EMPTY = { platforms: [], genres: [], mood: null, style: null, time: null, era: null };
 
@@ -75,8 +75,6 @@ export default function Flow() {
         <Results
           games={result.games}
           summary={summarize(answers)}
-          sessionId={result.session_id}
-          onVote={(gameId, vote) => sendVote(result.session_id, gameId, vote)}
           onRestart={restart}
         />
       )}
